@@ -3,6 +3,8 @@
 	var slot1
 	var slot2
 	var slot3
+
+
 	export function bill1(){
 	  return slot1
 	}
@@ -15,6 +17,8 @@
 	export function slot(){
 	  return intReading
 	}
+
+
 </script>
 <script>
 
@@ -22,10 +26,7 @@ let activetab
 
 import slots from './components/slots.svelte'
 import bill from  './components/bill.svelte'
-
-
-
-
+import payment from './components/payment.svelte'
 
     	
 // Import the functions you need from the SDKs you need
@@ -93,10 +94,19 @@ databaseInt.on('value', (snapshot) => {
   console.log('The read failed: ' + errorObject.name);
 });
 
+function senddata(){
+    database.ref('/gate').set(
+      {
+        int : 1
+      }
+    )
 
+    activetab = payment
+}
 
 
 </script>
+
 
 <main>
 	
@@ -104,12 +114,13 @@ databaseInt.on('value', (snapshot) => {
 		<h1>fixPark</h1>
 		<h2>We help people from being stranded!🚧</h2>
 		<button id="parking" on:click={()=>(activetab = slots)}>See Parking Space</button>
-		<button id="parking" on:click={()=>(activetab = bill)}>Pay Bill</button>
+		<button id="parking" on:click={()=>(activetab = bill)}>Show Bill</button>
+    <button id="parking" on:click={()=>(senddata())}>Pay Bill</button>
 	</div>
 	<img src="https://images.pexels.com/photos/1004409/pexels-photo-1004409.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" class="back">
 	<svelte:component this={activetab}/>
 	
-	
+  
 	
 
 </main>

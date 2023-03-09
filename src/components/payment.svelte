@@ -1,12 +1,5 @@
-
-
-
-<script>
-    import App,{slot} from "../App.svelte";
-</script>
-
 <main>
-    <h2 class="left-side">Available slots in Thrikkakara: {slot()}</h2> 
+    <h2 class="left-side">Payment Success 🗸</h2> 
 </main>
 
 <style>
@@ -14,5 +7,6 @@
 
     .left-side{
     margin-left: 50px;
+    color: rgb(10, 110, 5);
     }
 </style>
